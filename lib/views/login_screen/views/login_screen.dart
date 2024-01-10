@@ -148,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Sudah Punya akun? ',
+                  Text('Belum Punya akun? ',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: Constant.fontRegular,
