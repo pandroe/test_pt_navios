@@ -9,45 +9,49 @@ class CustomTextFormFieldWidgets extends StatelessWidget {
   final bool isPasswordHide;
   final VoidCallback? onTap;
   final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   const CustomTextFormFieldWidgets({
     required this.hintText,
     this.isPassword = false,
     this.isPasswordHide = true,
     this.onTap,
+    this.validator,
     this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
+    final inputDecoration = InputDecoration(
+      suffixIcon: isPassword
+          ? GestureDetector(
+              child: Icon(
+                isPasswordHide ? LineIcons.eyeSlash : LineIcons.eye,
+                color: Color(Constant.grayColorNetralDark),
+              ),
+              onTap: onTap,
+            )
+          : null,
+      hintText: hintText,
+      hintStyle: TextStyle(color: Color(Constant.grayColorNetralDark)),
+      fillColor: Color(Constant.blackColorTextFormField),
+      filled: true,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12.0),
+        borderSide: BorderSide(color: Color(Constant.blackColorborderSide)),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12.0),
+        borderSide: BorderSide(color: Color(Constant.blackColorborderSide)),
+      ),
+    );
+
     return TextFormField(
+      validator: validator,
       controller: controller,
       obscureText: isPassword && isPasswordHide,
-      decoration: InputDecoration(
-        //Fungsi Sembunyikan atau Menampilkan Password
-        suffixIcon: isPassword
-            ? GestureDetector(
-                child: Icon(
-                  isPasswordHide ? LineIcons.eyeSlash : LineIcons.eye,
-                  color: Color(Constant.grayColorNetralDark),
-                ),
-                onTap: onTap,
-              )
-            : null,
-        hintText: hintText,
-        hintStyle: TextStyle(color: Color(Constant.grayColorNetralDark)),
-        fillColor: Color(Constant.blackColorTextFormField),
-        filled: true,
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.0),
-          borderSide: BorderSide(color: Color(Constant.blackColorborderSide)),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.0),
-          borderSide: BorderSide(color: Color(Constant.blackColorborderSide)),
-        ),
-      ),
-      style: TextStyle(color: Color(Constant.witheColorNetral)),
+      decoration: inputDecoration,
+      style: const TextStyle(color: Color(Constant.witheColorNetral)),
     );
   }
 }
