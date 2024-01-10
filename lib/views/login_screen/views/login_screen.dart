@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:test_pt_navios/utils/constant.dart';
 import 'package:test_pt_navios/views/home_screen/views/home_screen.dart';
+import 'package:test_pt_navios/views/register_screen/views/register_screen.dart';
 import 'package:test_pt_navios/widgets/custom_form_field_text_widgets.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -91,20 +92,20 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Selamat datang di aplikasi kami.',
+              Text('Akan ada hal menarik untuk Anda.',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: Constant.fontExtraBig,
                       color: Color(Constant.witheColorNetral))),
               // Pembatas Jarak
               SizedBox(height: constant.size.height * 0.010),
-              Text('Kami sudah menunggu Anda.',
+              Text('Selamat datang kembali.',
                   style: TextStyle(
                       fontSize: Constant.fontBig,
                       color: Color(Constant.witheColorNetral))),
               // Pembatas Jarak
               SizedBox(height: constant.size.height * 0.010),
-              Text('Yuk Daftar Sekarang!',
+              Text('Yuk Login Sekarang!',
                   style: TextStyle(
                       fontSize: Constant.fontSemiBig,
                       color: Color(Constant.witheColorNetral))),
@@ -143,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
               ),
               // Pembatas Jarak
-              SizedBox(height: constant.size.height * 0.150),
+              SizedBox(height: constant.size.height * 0.250),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -157,9 +158,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   GestureDetector(
                     onTap: () {
                       Navigator.pushNamedAndRemoveUntil(
-                          context, LoginScreen.routeName, (route) => false);
+                          context, RegisterScreen.routeName, (route) => false);
                     },
-                    child: Text('Login',
+                    child: Text('Register',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: Constant.fontRegular,
