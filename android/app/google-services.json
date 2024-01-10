@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "843629428030",
+    "project_id": "test-pt-navios",
+    "storage_bucket": "test-pt-navios.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843629428030:android:57d4de064c0f213be5006f",
+        "android_client_info": {
+          "package_name": "com.example.test_pt_navios"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843629428030-ba1st1cte2hmvdd65dacj12n4772jlb3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoI1wBukUCLlbY7NjWWgwbGk_y3XK1B8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843629428030-ba1st1cte2hmvdd65dacj12n4772jlb3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
