@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constant.dart';
+import '../../login_screen/views/login_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'homescreen';
@@ -13,6 +15,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Future<void> _signOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Anda berhasil logout'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+      Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+    } catch (e) {
+      print("Error signing out: $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Constant constant = Constant(context);
@@ -31,29 +48,38 @@ class _HomeScreenState extends State<HomeScreen> {
                         backgroundImage: AssetImage('assets/images/profil.png'),
                         radius: constant.size.height * 0.100,
                       ),
-                      // Pembatas Jarak
                       SizedBox(height: constant.size.height * 0.025),
-                      Text('Hi, ${widget.userEmail}',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: Constant.fontRegular,
-                              color: Color(Constant.witheColorNetral))),
+                      Text(
+                        'Hi, ${widget.userEmail}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: Constant.fontRegular,
+                          color: Color(Constant.witheColorNetral),
+                        ),
+                      ),
                     ],
-                  ), // Pembatas Jarak
+                  ),
                   SizedBox(height: constant.size.height * 0.025),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: _signOut,
                     style: ElevatedButton.styleFrom(
-                        fixedSize: Size(constant.size.width * 0.250,
-                            constant.size.height * 0.030),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0)),
-                        backgroundColor: Color(Constant.witheColorNetral)),
-                    child: Text('Logout',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: Constant.fontSemiSmall,
-                            color: Color(Constant.blackColorBase))),
+                      fixedSize: Size(
+                        constant.size.width * 0.250,
+                        constant.size.height * 0.030,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      backgroundColor: Color(Constant.witheColorNetral),
+                    ),
+                    child: Text(
+                      'Logout',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: Constant.fontSemiSmall,
+                        color: Color(Constant.blackColorBase),
+                      ),
+                    ),
                   ),
                 ],
               ),
