@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:test_pt_navios/utils/constant.dart';
-import 'package:test_pt_navios/views/login_screen/views/login_screen.dart';
+import 'package:test_pt_navios/views/register_screen/views/register_screen.dart';
 import 'package:test_pt_navios/widgets/custom_form_field_text_widgets.dart';
 
-class RegisterScreen extends StatefulWidget {
-  static const String routeName = 'registerscreen';
-  const RegisterScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  static const String routeName = 'loginscreen';
+  const LoginScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   bool isPasswordHide = true;
   @override
   Widget build(BuildContext context) {
@@ -24,32 +24,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Selamat datang di aplikasi kami.',
+            Text('Akan ada hal menarik untuk Anda.',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: Constant.fontExtraBig,
                     color: Color(Constant.witheColorNetral))),
             // Pembatas Jarak
             SizedBox(height: constant.size.height * 0.010),
-            Text('Kami sudah menunggu Anda.',
+            Text('Selamat datang kembali.',
                 style: TextStyle(
                     fontSize: Constant.fontBig,
                     color: Color(Constant.witheColorNetral))),
             // Pembatas Jarak
             SizedBox(height: constant.size.height * 0.010),
-            Text('Yuk Daftar Sekarang!',
+            Text('Yuk Login Sekarang!',
                 style: TextStyle(
                     fontSize: Constant.fontSemiBig,
                     color: Color(Constant.witheColorNetral))),
             // Pembatas Jarak
             SizedBox(height: constant.size.height * 0.080),
-            // Form Full Name
-            // Form Full Name
-            CustomTextFormFieldWidgets(
-              hintText: 'Nama Lengkap',
-            ),
-            // Pembatas Jarak
-            SizedBox(height: constant.size.height * 0.030),
             // Form Email
             CustomTextFormFieldWidgets(
               hintText: 'Email',
@@ -68,11 +61,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
               },
             ),
 // Pembatas Jarak
-            SizedBox(height: constant.size.height * 0.150),
+            SizedBox(height: constant.size.height * 0.260),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Sudah Punya akun? ',
+                Text('Apakah Sudah Punya akun? ',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: Constant.fontRegular,
@@ -82,9 +75,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 GestureDetector(
                   onTap: () {
                     Navigator.pushNamedAndRemoveUntil(
-                        context, LoginScreen.routeName, (route) => false);
+                        context, RegisterScreen.routeName, (route) => false);
                   },
-                  child: Text('Login',
+                  child: Text('Register',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: Constant.fontRegular,
@@ -103,7 +96,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0)),
                     backgroundColor: Color(Constant.witheColorNetral)),
-                child: Text('Register',
+                child: Text('Login',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: Constant.fontRegular,
