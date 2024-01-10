@@ -176,7 +176,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Navigator.pushNamedAndRemoveUntil(
                           context, LoginScreen.routeName, (route) => false);
                     },
-                    child: Text('Register',
+                    child: Text('Login',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: Constant.fontRegular,
