@@ -133,12 +133,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 hintText: 'Email',
                 controller: _emailController,
                 validator: (value) {
+                  const String expression = "[a-zA-Z0-9+._%-+]{1,256}"
+                      "\\@"
+                      "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}"
+                      "("
+                      "\\."
+                      "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}"
+                      ")+";
+                  final RegExp regExp = RegExp(expression);
+
                   if (value == null || value.isEmpty) {
                     return 'Email tidak boleh kosong!';
+                  } else if (!regExp.hasMatch(value)) {
+                    return "Silakan, masukkan email yang valid!";
                   }
+
                   return null;
                 },
               ),
+
               // Pembatas Jarak
               SizedBox(height: constant.size.height * 0.030),
               // Form Password
@@ -150,6 +163,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Password tidak boleh kosong!';
+                  } else if (value.length < 8) {
+                    return 'Password harus terdiri dari minimal 8 karakter!';
+                  } else if (!value.contains(RegExp(r'[A-Z]'))) {
+                    return 'Password harus mengandung minimal 1 huruf besar!';
+                  } else if (!value
+                      .contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+                    return 'Password harus mengandung minimal 1 huruf spesial!';
                   }
                   return null;
                 },
@@ -159,6 +179,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   });
                 },
               ),
+
               // Pembatas Jarak
               SizedBox(height: constant.size.height * 0.150),
               Row(
